@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1039878736147",
+    "project_id": "mbank-4db8c",
+    "storage_bucket": "mbank-4db8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039878736147:android:ad9d4909358db674e872e6",
+        "android_client_info": {
+          "package_name": "com.example.planner_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1039878736147-ish0kg1pp8kgku47rqbmaeq4gu3gbhn1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6v-c0awGvHxGqQO5GXoRqlwh9YgscpV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1039878736147-ish0kg1pp8kgku47rqbmaeq4gu3gbhn1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
