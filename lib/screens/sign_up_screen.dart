@@ -63,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       decoration: BoxDecoration(color: Colors.black),
       child:
           // StepProgressIndicator nemeh
-          Stepper(
+          Stepper( 
         controlsBuilder: (BuildContext context, ControlsDetails controls) {
           return Container(
               child: SizedBox(

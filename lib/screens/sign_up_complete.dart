@@ -28,7 +28,7 @@ class SignUpComplete extends StatelessWidget {
         Spacer(),
         Container(
           padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
-          child: signInSignUpButton(context, 'Okay!', true, HomeScreen()),
+          child: largeButton(context, 'Okay!', true, HomeScreen()),
         ),
       ]),
     ));

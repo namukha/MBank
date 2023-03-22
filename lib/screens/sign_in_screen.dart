@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:planner_app/screens/sign_up_screen.dart';
 import '../reusable_widgets/reusable_widget.dart';
@@ -36,11 +37,11 @@ class _SignInScreenState extends State<SignInScreen> {
               reusableTextField(
                   'Password', Icons.lock_outline, true, passwordController),
               Spacer(),
-              signInSignUpButton(context, 'Sign In', true, HomeScreen()),
+              largeButton(context, 'Sign In', true, HomeScreen()),
               SizedBox(
                 height: 15,
               ),
-              signInSignUpButton(context, 'Sign Up', false, SignUpScreen()),
+              largeButton(context, 'Sign Up', false, SignUpScreen()),
               SizedBox(
                 height: 20,
               )

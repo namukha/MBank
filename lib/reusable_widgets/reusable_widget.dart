@@ -35,7 +35,26 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType,
   );
 }
 
-Container signInSignUpButton(context, String type, bool isLogin, Widget nextScreen) {
+Container signInSignUpButton(context, String type, bool isLogin, Function onTap) {
+  return Container(
+      child: SizedBox(
+    width: double.infinity,
+    height: double.tryParse('52'),
+    child: ElevatedButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateColor.resolveWith((states) => isLogin ? Colors.white : Color(0xFF2C2C2E)),
+        foregroundColor: MaterialStateColor.resolveWith((states) => isLogin ? Colors.black : Colors.white),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))
+        ),
+      ),
+      onPressed: onTap(),
+      child: Text(type),
+    ),
+  ));
+}
+
+Container largeButton(context, String type, bool isLogin, Widget nextScreen) {
   return Container(
       child: SizedBox(
     width: double.infinity,
