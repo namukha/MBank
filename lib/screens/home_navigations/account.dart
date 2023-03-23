@@ -172,10 +172,13 @@ class _AccountPageState extends State<AccountPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                      Image.asset('assets/images/logoGreen.png', width: 50,),
-                      Text('460000'),
-                      Text('1.2%'),
-                      Text('Expiration date'),
+                      Image.asset('assets/images/logoGreen.png', width: 60,),
+                      SizedBox(height: 30),
+                      Text('460000', style: TextStyle(fontWeight: FontWeight.bold),),
+                      SizedBox(height: 7),
+                      Text('1.2%', style: TextStyle(color: Color.fromRGBO(245, 246, 247, 0.52))),
+                      SizedBox(height: 24),
+                      Text('Expiration date', style: TextStyle(color: Color.fromRGBO(245, 246, 247, 0.52))),
                       Text('2023/09/25')
                     ]),
                   )),

@@ -6,6 +6,5 @@ abstract class AccountStatusEvent {
 
   const AccountStatusEvent(this.accIndex);
 
-  @override
   List<Object> get props => [accIndex];
 }

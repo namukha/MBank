@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,7 +18,7 @@ void main() async {
 
 class SimpleBlocObserver extends BlocObserver {
   @override
-  void onEvent(Bloc bloc, Object? event) {
+  void onEvent(Bloc bloc, Object event) {
     super.onEvent(bloc, event);
     print(event);
   }
@@ -36,7 +37,7 @@ class SimpleBlocObserver extends BlocObserver {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({key});
 
   // This widget is the root of your application.
   @override
