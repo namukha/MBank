@@ -75,7 +75,9 @@ class _RepayPageState extends State<RepayPage> {
                                       borderRadius:
                                           BorderRadius.circular(12)))),
                           onPressed: () {
-                            frequency = 'Every Month';
+                            setState(() {
+                              frequency = 'Every Month';
+                            });
                           },
                           child: Text('Every Month'),
                         ),
@@ -96,7 +98,9 @@ class _RepayPageState extends State<RepayPage> {
                                       borderRadius:
                                           BorderRadius.circular(12)))),
                           onPressed: () {
-                            frequency = 'Every 2 Months';
+                            setState(() {
+                              frequency = 'Every 2 Months';
+                            });
                           },
                           child: Text('Every 2 Months'),
                         ),
