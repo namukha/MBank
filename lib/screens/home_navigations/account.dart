@@ -1,8 +1,11 @@
+// import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:planner_app/screens/home_bloc.dart';
 import 'package:planner_app/bloc/account_status_bloc.dart';
 import 'package:planner_app/reusable_widgets/reusable_widget.dart';
 import 'package:planner_app/screens/empty.dart';
+import 'package:planner_app/screens/home_navigations/loan_page.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -42,7 +45,7 @@ class _AccountPageState extends State<AccountPage> {
         children: [
           StreamBuilder<AccountStatusState>(
               initialData: accounts.first,
-              stream: bloc.reloadSubject.stream,
+              stream: bloc.reloadAccountSt.stream,
               builder: (context, snapshot) {
                 if (snapshot.data == null) return Container();
                 return Container(
@@ -114,17 +117,17 @@ class _AccountPageState extends State<AccountPage> {
                                                 MaterialStateColor.resolveWith(
                                                     (states) =>
                                                         Color(0xFF2C2C2E)),
-                                                        padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(16)),
+                                            padding: MaterialStateProperty.all<
+                                                EdgeInsets>(EdgeInsets.all(16)),
                                             shape: MaterialStateProperty.all(
                                                 RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             12)))),
                                         onPressed: () {
-                                          bloc.reloadSubject.add(a);
+                                          bloc.reloadAccountSt.add(a);
                                         },
-                                        child: Column(
-                                          children: [
+                                        child: Column(children: [
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
@@ -148,7 +151,37 @@ class _AccountPageState extends State<AccountPage> {
                             );
                           }),
                     ));
-              })
+              }),
+          Row(
+            children: [
+              Container(
+                  margin: EdgeInsets.all(10),
+                  width: 167,
+                  height: double.tryParse('204'),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateColor.resolveWith(
+                            (states) => Color.fromRGBO(28, 28, 30, 1)),
+                        padding: MaterialStateProperty.all<EdgeInsets>(
+                            EdgeInsets.all(16)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12)))),
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => LoanPage()));
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                      Image.asset('assets/images/logoGreen.png', width: 50,),
+                      Text('460000'),
+                      Text('1.2%'),
+                      Text('Expiration date'),
+                      Text('2023/09/25')
+                    ]),
+                  )),
+              Container(),
+            ],
+          )
         ],
       ),
     );
