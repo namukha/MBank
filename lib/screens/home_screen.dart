@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planner_app/bloc/account_status_bloc.dart';
+import 'package:planner_app/screens/home_navigations/mhub.dart';
+import 'package:planner_app/screens/home_navigations/shiljuuleg.dart';
 import 'package:planner_app/screens/sign_in_screen.dart';
 import './home_navigations/account.dart';
 import '../bloc/auth_bloc.dart';
@@ -28,20 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     List<Widget> _widgetOptions = <Widget>[
       AccountPage(),
-      Container(
-          height: double.infinity,
-          width: double.infinity,
-          decoration: const BoxDecoration(color: Colors.black),
-          child: Text(
-            'shiljuuleg',
-            style: TextStyle(color: Colors.white),
-          )),
-      Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: const BoxDecoration(color: Colors.black),
-        child: Text('hehe'),
-      ),
+      TransferPage(),
+      MHubPage(),
     ];
 
     // // // // // // // // // // // // // // // // // // // // // // // //
@@ -68,7 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
           body: BlocListener<AuthBloc, AuthState>(
             listener: (context, state) {
               if (state is UnAuthenticated) {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SignInScreen()));
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => SignInScreen()));
               }
             },
             child: Center(
@@ -79,11 +70,14 @@ class _HomeScreenState extends State<HomeScreen> {
           bottomNavigationBar: DotNavigationBar(
               items: [
                 DotNavigationBarItem(
-                    icon: Image.asset('assets/icons/iconM.png')),
+                    icon: Image.asset('assets/icons/iconM.png'),
+                    selectedColor: Color(0xFF00C7A3)),
                 DotNavigationBarItem(
-                    icon: Image.asset('assets/icons/iconArrow.png')),
+                    icon: Image.asset('assets/icons/iconArrow.png'),
+                    selectedColor: Color(0xFF00C7A3)),
                 DotNavigationBarItem(
-                    icon: Image.asset('assets/icons/iconCategories.png')),
+                  icon: Image.asset('assets/icons/iconCategories.png'),
+                ),
               ],
               onTap: _onItemTapped,
               currentIndex: _selectedIndex,

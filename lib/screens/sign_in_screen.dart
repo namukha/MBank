@@ -28,12 +28,6 @@ class _SignInScreenState extends State<SignInScreen> {
     }
   }
 
-  void _signUpWithEmailAndPassword(context) {
-    BlocProvider.of<AuthBloc>(context).add(
-      SigningUp(usernameController.text, passwordController.text),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
