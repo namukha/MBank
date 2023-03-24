@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planner_app/screens/sign_up_screenNew.dart';
 import '../bloc/auth_bloc.dart';
-import 'package:planner_app/screens/sign_up_screen.dart';
+// import 'package:planner_app/screens/sign_up_screen.dart';
 import '../reusable_widgets/reusable_widget.dart';
 import './home_screen.dart';
 
@@ -80,7 +81,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       SizedBox(
                         height: 15,
                       ),
-                      largeButton(context, 'Sign Up', false, SignUpScreen()),
+                      largeButton(context, 'Sign Up', false, SignUpPage()),
                       SizedBox(
                         height: 20,
                       )

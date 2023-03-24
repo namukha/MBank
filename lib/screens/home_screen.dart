@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,7 +6,6 @@ import 'package:planner_app/bloc/account_status_bloc.dart';
 import 'package:planner_app/screens/sign_in_screen.dart';
 import './home_navigations/account.dart';
 import '../bloc/auth_bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  final user = FirebaseAuth.instance.currentUser!;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -55,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 context.read<AuthBloc>().add(SigningOut());
               },
             ),
-            title: Text('Your Name'),
+            title: user.email != null ? Text(user.email!) : Text('Your Name'),
             actions: [
               Icon(Icons.remove_red_eye_outlined),
               SizedBox(
