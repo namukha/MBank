@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planner_app/bloc/account_status_bloc.dart';
+import 'package:planner_app/screens/sign_in_screen.dart';
 import './home_navigations/account.dart';
+import '../bloc/auth_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -48,7 +51,9 @@ class _HomeScreenState extends State<HomeScreen> {
             backgroundColor: Colors.black,
             leading: IconButton(
               icon: Icon(Icons.account_circle),
-              onPressed: () {},
+              onPressed: () {
+                context.read<AuthBloc>().add(SigningOut());
+              },
             ),
             title: Text('Your Name'),
             actions: [
@@ -59,8 +64,15 @@ class _HomeScreenState extends State<HomeScreen> {
               Icon(Icons.notifications)
             ],
           ),
-          body: Center(
-            child: _widgetOptions.elementAt(_selectedIndex),
+          body: BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) {
+              if (state is UnAuthenticated) {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SignInScreen()));
+              }
+            },
+            child: Center(
+              child: _widgetOptions.elementAt(_selectedIndex),
+            ),
           ),
           extendBody: true,
           bottomNavigationBar: DotNavigationBar(

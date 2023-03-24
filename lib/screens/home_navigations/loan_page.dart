@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:planner_app/models/loan_model.dart';
+import 'package:planner_app/data/models/loan_model.dart';
 import 'package:planner_app/screens/home_navigations/repay_date.dart';
 import '../../bloc/loan_bloc.dart';
 // ignore: import_of_legacy_library_into_null_safe

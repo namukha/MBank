@@ -2,12 +2,13 @@
 import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planner_app/bloc/auth_bloc.dart';
+import 'package:planner_app/data/repositories/auth_repo.dart';
 import './screens/sign_in_screen.dart';
-import 'package:bloc/bloc.dart';
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-
-void main() async {  
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -42,15 +43,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        fontFamily: 'ZonaPro',
-        colorScheme: ThemeData().colorScheme.copyWith(
-          primary: Color(0xFF21CDA8),
-        )
+    return RepositoryProvider(
+      create: (context) => AuthRepository(),
+      child: BlocProvider(
+        create: (context) => AuthBloc(authRepository: RepositoryProvider.of<AuthRepository>(context)),
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+              fontFamily: 'ZonaPro',
+              colorScheme: ThemeData().colorScheme.copyWith(
+                    primary: Color(0xFF21CDA8),
+                  )),
+          home: const SignInScreen(),
+        ),
       ),
-      home: const SignInScreen(),
     );
   }
 }
